@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Data/Data.iml" filepath="$PROJECT_DIR$/Data/Data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataJDBC/DataJDBC.iml" filepath="$PROJECT_DIR$/DataJDBC/DataJDBC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataSQLite/DataSQLite.iml" filepath="$PROJECT_DIR$/DataSQLite/DataSQLite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Servers/Servers.iml" filepath="$PROJECT_DIR$/Servers/Servers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Services/Services.iml" filepath="$PROJECT_DIR$/Services/Services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServicesTomcatWAR/ServicesTomcatWAR.iml" filepath="$PROJECT_DIR$/ServicesTomcatWAR/ServicesTomcatWAR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
+    </modules>
+  </component>
+</project>
+
