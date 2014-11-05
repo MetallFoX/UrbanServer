@@ -89,7 +89,7 @@ public class CategoryPojo implements Category {
         			return 1;
         		if (pos2 == null)
         			return -1;
-        		return 0;//pos1.getId().compareTo(pos2.getId());
+        		return pos2.getId() - pos1.getId();
         	};
         });
         if (toPositionsLinks == null) return null;

@@ -1,6 +1,7 @@
 package src.com.urban.data.sqlite.pojo;
 
 import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -26,8 +27,8 @@ public class UserPojo implements User {
 	@DatabaseField	
 	private String password;
 	
-	@DatabaseField	
-	private java.util.Date regDate;
+	@DatabaseField(dataType = DataType.DATE_STRING, format = "yyyy-MM-dd")
+	private Date regDate;
 	
 	@DatabaseField	
 	private String regId;
@@ -127,7 +128,7 @@ public class UserPojo implements User {
                     return 1;
                 if (pos2 == null)
                     return -1;
-                return 0;
+                return pos2.getId() - pos1.getId();
             };
         });
 

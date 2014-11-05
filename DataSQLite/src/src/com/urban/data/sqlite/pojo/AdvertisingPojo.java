@@ -18,7 +18,7 @@ public class AdvertisingPojo implements Advertising {
     @DatabaseField(generatedId = true)
     private Integer id;
 
-    @DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, canBeNull = true, columnName = "organization")
+    @DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, canBeNull = true, columnName = "position")
     private PositionPojo position;
 
     @DatabaseField

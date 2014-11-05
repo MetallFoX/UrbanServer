@@ -1,5 +1,6 @@
 package src.com.urban.data.sqlite.pojo;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Person;
@@ -34,7 +35,7 @@ public class PersonPojo implements Person {
 	@DatabaseField	
 	private String phone;
 	
-	@DatabaseField	
+	@DatabaseField(dataType = DataType.DATE_STRING, format = "yyyy-MM-dd")
 	private Date birthday;
 	
 	/*
