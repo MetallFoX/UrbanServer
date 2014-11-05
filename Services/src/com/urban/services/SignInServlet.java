@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.urban.data.User;
 import com.urban.data.dao.DAO;
 import com.urban.data.dao.UrbanCriterion;
-import com.urban.data.jdbc.JDBCDAO;
 import com.urban.data.jdbc.pojo.UserPojo;
 import com.urban.services.error.ResponseError;
+import flexjson.JSONSerializer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,9 +25,7 @@ public class SignInServlet extends HttpServlet {
 
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		DAO.setDAO(new JDBCDAO(""));
-		
+
     	response.setContentType("application/json;charset=utf-8");
     	
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
@@ -43,18 +41,18 @@ public class SignInServlet extends HttpServlet {
 		builder = new StringBuilder();
 		
 		if (user != null) {
-			UrbanCriterion criterion = DAO.createCriterion();
+			UrbanCriterion criterion = DAO.createCriterion(User.class);
 			criterion = criterion.and(
 					criterion.eq("login", user.getLogin()),
 					criterion.eq("password", user.getPassword()));
 
-            //Ищем пользовател¤ среди зарегистрированных.
+            //Ищем пользователя среди зарегистрированных.
 			User foundUser = DAO.getUniqByCriterion(User.class, criterion);
-			gson = new Gson();
 			if (foundUser == null) {
-				builder.append(gson.toJson(new ResponseError(-1, "No registered user with the same login and password.")));
+                builder.append(new JSONSerializer().exclude("*.class").deepSerialize(new ResponseError(-1, "No registered user with the same login and password.")));
 			} else {
-				builder.append(gson.toJson(foundUser));
+                //FIXME: Some nulls within serialized string instead correct values.
+                builder.append(new JSONSerializer().deepSerialize(user));
 			}
 		}
 		

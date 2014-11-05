@@ -13,8 +13,16 @@
  
   <listener>
 	<listener-class>com.urban.services.notification.impl.ApiKeyInitializer</listener-class>
-  </listener> 
+  </listener>
 
+
+  <servlet>
+    <description>Init servlet</description>
+    <display-name>Init</display-name>
+    <servlet-name>Init</servlet-name>
+    <servlet-class>com.urban.services.InitServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
   <servlet>
     <description>SignIn servlet</description>
     <display-name>SignIn</display-name>
@@ -64,8 +72,14 @@
     <servlet-name>HomeServlet</servlet-name>
     <servlet-class>com.urban.services.notification.impl.HomeServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
-  </servlet>  
+  </servlet>
 
+    <!-- Servlet mapping -->
+
+    <servlet-mapping>
+    <servlet-name>Init</servlet-name>
+    <url-pattern>/init</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SignIn</servlet-name>
     <url-pattern>/signIn</url-pattern>

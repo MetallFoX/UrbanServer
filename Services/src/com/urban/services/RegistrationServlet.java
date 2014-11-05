@@ -5,7 +5,6 @@ import com.urban.data.Person;
 import com.urban.data.User;
 import com.urban.data.dao.DAO;
 import com.urban.data.dao.UrbanCriterion;
-import com.urban.data.jdbc.JDBCDAO;
 import com.urban.data.jdbc.pojo.UserPojo;
 import com.urban.services.error.ResponseError;
 import flexjson.JSONSerializer;
@@ -29,8 +28,6 @@ public class RegistrationServlet extends HttpServlet {
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		DAO.setDAO(new JDBCDAO(""));
-		
     	String reqStr = ServletHelper.streamToStr(request.getInputStream());
     	Gson gson = new GsonBuilder().registerTypeAdapter(Person.class, new InterfaceAdapter<Person>()).create();
     	
@@ -39,12 +36,12 @@ public class RegistrationServlet extends HttpServlet {
 		StringBuilder builder = new StringBuilder();
 		
 		if (user != null) {
-			UrbanCriterion criterion = DAO.createCriterion();
+			UrbanCriterion criterion = DAO.createCriterion(User.class);
 			criterion = criterion.and(
 					criterion.eq("login", user.getLogin()),
 					criterion.eq("password", user.getPassword()));
 
-            //Ищем пользовател¤ среди зарегистрированных.
+            //Ищем пользователя среди зарегистрированных.
 			User foundUser = DAO.getUniqByCriterion(User.class, criterion);
 			if (foundUser == null) {
 				try {
@@ -55,7 +52,7 @@ public class RegistrationServlet extends HttpServlet {
 					builder.append(new JSONSerializer().exclude("*.class").deepSerialize(new ResponseError(-2, "Sorry, you were not registered.")));
 				}
 			} else {
-				builder.append(new JSONSerializer().exclude("*.class").deepSerialize(new ResponseError(-3, "No user found.")));
+				builder.append(new JSONSerializer().exclude("*.class").deepSerialize(new ResponseError(-3, "The same user is already exists.")));
 			}
 		}
 		

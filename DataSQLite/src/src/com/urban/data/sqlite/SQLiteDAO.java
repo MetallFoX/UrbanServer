@@ -1,8 +1,10 @@
 package src.com.urban.data.sqlite;
 
+import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
@@ -17,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SLQLiteDAO implements IDAO {
+public class SQLiteDAO implements IDAO {
 
 	private ConnectionSource connectionSource;
 
@@ -53,7 +55,7 @@ public class SLQLiteDAO implements IDAO {
 	}
 	
 	
-	public SLQLiteDAO(String jdbcConnectionStr) {
+	public SQLiteDAO(String jdbcConnectionStr) {
 		// create a connection source to our database
 		try {
 			connectionSource = new JdbcConnectionSource(jdbcConnectionStr);
@@ -125,6 +127,8 @@ public class SLQLiteDAO implements IDAO {
 		if (dao == null) {
 			dao = DaoManager.createDao(connectionSource, type);
 		}
+        //FIXME: change this?
+        ((BaseDaoImpl)dao).initialize();
 		return dao;
 	}
 
@@ -146,7 +150,7 @@ public class SLQLiteDAO implements IDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> T getUnicByCriterion(Class<T> type, UrbanCriterion criterion) {
+	public <T> T getUniqByCriterion(Class<T> type, UrbanCriterion criterion) {
 		try {
 			Dao<T, String> dao = getDao(type);
 			Where<T, String> where = ((SQLiteUrbanCriterion<T>) criterion).getWhere();
@@ -162,14 +166,33 @@ public class SLQLiteDAO implements IDAO {
 	}
 
 	@Override
-	public UrbanCriterion createCriteria() {
-		// TODO Auto-generated method stub
-		return null;
+	public <T> UrbanCriterion createCriteria(Class<T> type) {
+        try {
+            Dao<T, String> dao = getDao(type);
+            return new SQLiteUrbanCriterion(type, dao);
+        } catch (SQLException e) {
+            // TODO implement exception handling
+            e.printStackTrace();
+        }
+        return null;
 	}
 
 	@Override
 	public <T> Class<T> getPojo(Class<T> intf) {
 		return classes.get(intf);
 	}
+
+    @Override
+    public <T> void deleteAll(Class<T> type) {
+        try {
+            Dao<T, String> dao = getDao(type);
+            DeleteBuilder<T, String> dBuilder = dao.deleteBuilder();
+            dBuilder.delete();
+        } catch (SQLException e) {
+            // TODO implement exception handling
+            e.printStackTrace();
+        }
+    }
+
 
 }

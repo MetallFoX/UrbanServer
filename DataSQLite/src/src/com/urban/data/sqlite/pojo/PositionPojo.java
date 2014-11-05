@@ -30,9 +30,12 @@ public class PositionPojo implements Position {
     
     @ForeignCollectionField(eager = true)
     private ForeignCollection<PositionPageLinkPojo> toPagesLinks;*/
-    
+
     @ForeignCollectionField(eager = true)
     private ForeignCollection<ActionPojo> actions;
+
+    @ForeignCollectionField(eager = true)
+    private ForeignCollection<NotificationSubscribePojo> toSubscribeLinks;
 
     private void setId(int value) {
         this.id = value;
@@ -95,4 +98,16 @@ public class PositionPojo implements Position {
 		return null;
 	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Position) {
+            return id.equals((((Position) obj).getId()));
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

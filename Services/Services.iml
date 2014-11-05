@@ -33,6 +33,7 @@
     <orderEntry type="module" module-name="Data" />
     <orderEntry type="module" module-name="DataJDBC" />
     <orderEntry type="library" name="JDBC" level="project" />
+    <orderEntry type="module" module-name="DataSQLite" />
   </component>
 </module>
 

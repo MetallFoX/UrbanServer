@@ -1,5 +1,7 @@
 package src.com.urban.data.sqlite;
 
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 import com.urban.data.dao.UrbanCriterion;
 
@@ -9,9 +11,12 @@ import java.util.Collection;
 public class SQLiteUrbanCriterion<T> implements UrbanCriterion {
 
 	Where<T, String> where;
+    Class<T> type;
 	
-	public SQLiteUrbanCriterion() {
-
+	public SQLiteUrbanCriterion(Class<T> type, Dao dao) {
+        this.type = type;
+        QueryBuilder<T, String> qBuilder = dao.queryBuilder();
+        where = qBuilder.where();
 	}
 	
 	private SQLiteUrbanCriterion(Where<T, String> where) {

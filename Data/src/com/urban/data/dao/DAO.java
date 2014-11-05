@@ -30,18 +30,22 @@ public class DAO {
    
    public static <T> List<T> getByCriterion(Class<T> type, UrbanCriterion criterion) {
 	   Class pojo = curDao.getPojo(type);
-       return  (List<T>) (pojo != null ?
-               curDao.getByCriterion(pojo, criterion) : curDao.getByCriterion(type, criterion));
+       return  (List<T>) curDao.getByCriterion(pojo != null ? pojo : type, criterion);
    }
    
    public static <T> T getUniqByCriterion(Class<T> type, UrbanCriterion criterion) {
 	   Class pojo = curDao.getPojo(type);
-       return  (T) (pojo != null ?
-               curDao.getUnicByCriterion(pojo, criterion) : curDao.getUnicByCriterion(type, criterion));
+       return  (T) curDao.getUniqByCriterion(pojo != null ? pojo : type, criterion);
    }
    
-   public static UrbanCriterion createCriterion() {
-       return curDao.createCriteria();
+   public static <T> UrbanCriterion createCriterion(Class<T> type) {
+       Class pojo = curDao.getPojo(type);
+       return curDao.createCriteria(pojo != null ? pojo : type);
    }
+
+    public static <T> void deleteAll(Class<T> type) {
+        Class pojo = curDao.getPojo(type);
+        curDao.deleteAll(pojo != null ? pojo : type);
+    }
 
 }

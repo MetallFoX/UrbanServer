@@ -1,9 +1,12 @@
 package com.urban.data.jdbc.pojo;
 
 import com.urban.data.Category;
+import com.urban.data.Position;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Category")
@@ -55,7 +58,7 @@ public class CategoryPojo implements Serializable, Category {
 	}
 	
 	public void setParent(int value) {
-		setParent(new Integer(value));
+		setParent(Integer.valueOf(value));
 	}
 	
 	public void setParent(CategoryPojo value) {
@@ -87,7 +90,7 @@ public class CategoryPojo implements Serializable, Category {
 		this.position = value;
 	}
 	
-	public java.util.Set getPositions() {
+	public Set<Position> getPositions() {
 		return position;
 	}
 	

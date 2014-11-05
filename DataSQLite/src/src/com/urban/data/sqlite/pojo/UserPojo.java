@@ -1,11 +1,14 @@
 package src.com.urban.data.sqlite.pojo;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Person;
+import com.urban.data.Position;
 import com.urban.data.User;
 
-import java.util.Set;
+import java.util.*;
 
 @DatabaseTable(tableName="User")
 public class UserPojo implements User {
@@ -34,10 +37,17 @@ public class UserPojo implements User {
 	private Integer isBlocked;
 	
 	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, canBeNull = true, columnName = "person")
-	private Person person;
+	private PersonPojo person;
 	
 	@DatabaseField	
 	private int IMEI;
+
+    @ForeignCollectionField(eager = true)
+    private ForeignCollection<NotificationSubscribePojo> toSubscribeLinks;
+
+    ForeignCollection<NotificationSubscribePojo> getSubscribeLinks() {
+        return toSubscribeLinks;
+    }
 	
 	private void setId(int value) {
 		this.id = value;
@@ -67,7 +77,7 @@ public class UserPojo implements User {
 		this.regDate = value;
 	}
 	
-	public java.util.Date getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 	
@@ -100,7 +110,7 @@ public class UserPojo implements User {
 	}
 	
 	public void setPerson(Person value) {
-		this.person = value;
+		this.person = (PersonPojo)value;
 	}
 	
 	public Person getPerson() {
@@ -108,9 +118,25 @@ public class UserPojo implements User {
 	}
 
 	@Override
-	public Set<User> getSubscribes() {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Position> getSubscribes() {
+        SortedSet<Position> posSet = new TreeSet<Position>(new Comparator<Position>(){
+            public int compare(Position pos1, Position pos2){
+                if (pos1 == pos2)
+                    return 0;
+                if (pos1 == null)
+                    return 1;
+                if (pos2 == null)
+                    return -1;
+                return 0;
+            };
+        });
+
+        if (toSubscribeLinks == null) return null;
+
+        for (NotificationSubscribePojo subscribeLink : toSubscribeLinks){
+            posSet.add(subscribeLink.getPosition());
+        }
+        return posSet;
 	}
 	
 }

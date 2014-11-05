@@ -6,12 +6,13 @@ import org.hibernate.criterion.Restrictions;
 
 import java.util.Collection;
 
-public class JDBCUrbanCriterion implements UrbanCriterion {
+public class JDBCUrbanCriterion<T> implements UrbanCriterion {
 
 	Criterion criterion;// = new  criterion;
+    Class<T> type;
 	
-	public JDBCUrbanCriterion() {
-
+	public JDBCUrbanCriterion(Class<T> type) {
+        this.type = type;
 	}
 	
 	private JDBCUrbanCriterion(Criterion criterion) {

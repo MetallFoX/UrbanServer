@@ -39,12 +39,12 @@ public class UpdateUserServlet extends HttpServlet {
 		StringBuilder builder = new StringBuilder();
 		
 		if (outerUser != null) {
-			UrbanCriterion criterion = DAO.createCriterion();
+			UrbanCriterion criterion = DAO.createCriterion(User.class);
 			criterion = criterion.and(
 					criterion.eq("login", outerUser.getLogin()),
 					criterion.eq("password", outerUser.getPassword()));
 
-            //Ищем пользовател¤ среди зарегистрированных.
+            //Ищем пользователя среди зарегистрированных.
 			User foundUser = DAO.getUniqByCriterion(User.class, criterion);
 			if (foundUser != null) {
 				try {

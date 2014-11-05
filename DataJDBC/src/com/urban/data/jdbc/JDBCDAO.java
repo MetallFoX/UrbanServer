@@ -148,25 +148,29 @@ public class JDBCDAO implements IDAO {
 	}
 	
 	@Override
-	public <T> T getUnicByCriterion(Class<T> type, UrbanCriterion criterion) {
+	public <T> T getUniqByCriterion(Class<T> type, UrbanCriterion criterion) {
+        Transaction trn = null;
 		try {
 			Session session = getSession();
-			Transaction trn = session.beginTransaction();
+			trn = session.beginTransaction();
 			Criteria crit = session.createCriteria(type);
 			crit.add(((JDBCUrbanCriterion)criterion).getCriterion());
 			T value = (T)crit.uniqueResult();
 			trn.commit();
 			return value;
 		} catch (HibernateException e) {
+            if (trn != null) {
+                trn.rollback();
+            }
 			System.out.println(e.getMessage());
 		}
 		
 		return null;
 	}
-	
+
 	@Override
-	public UrbanCriterion createCriteria() {
-		return new JDBCUrbanCriterion();
+	public <T> UrbanCriterion createCriteria(Class<T> type) {
+		return new JDBCUrbanCriterion(type);
 	}
 	
 	@Override
@@ -174,8 +178,32 @@ public class JDBCDAO implements IDAO {
 		return classes.get(intf);
 	}
 
+    @Override
+    public <T> void deleteAll(Class<T> type) {
+        Session session = getSession();
+        Criteria crit = session.createCriteria(type);
+        Transaction trn = null;
+        ScrollableResults sc = crit.scroll();
+        try {
+            trn = session.beginTransaction();
+            while (sc.next()) {
+                session.delete(sc.get(0));
+            }
+            trn.commit();
+        } catch (HibernateException e) {
+            if (trn != null) {
+                trn.rollback();
+            }
+            System.out.println(e.getMessage());
+        } finally {
+            if (sc != null) {
+                sc.close();
+            }
+        }
+    }
 
-	public static class HibernateUtil {
+
+    public static class HibernateUtil {
 		
 		private static final SessionFactory sessionFactory;
 		

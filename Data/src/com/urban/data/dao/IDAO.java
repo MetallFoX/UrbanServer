@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Интерфейс для всех объектов, реализующих доступ к данным.
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
  * @author victor
  *
  */
@@ -18,9 +18,11 @@ public interface IDAO {
 	
 	public <T> List<T> getByCriterion(Class<T> type, UrbanCriterion criterion);
 	
-	public <T> T getUnicByCriterion(Class<T> type, UrbanCriterion criterion);
+	public <T> T getUniqByCriterion(Class<T> type, UrbanCriterion criterion);
 	
-	public UrbanCriterion createCriteria();
+	public <T> UrbanCriterion createCriteria(Class<T> type);
 	
 	public <T> Class<T> getPojo(Class<T> intf);
+
+    public <T> void deleteAll(Class<T> type);
 }

@@ -4,6 +4,8 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Person;
 
+import java.util.Date;
+
 @DatabaseTable(tableName="Person")
 public class PersonPojo implements Person {
 	
@@ -14,10 +16,10 @@ public class PersonPojo implements Person {
 	@DatabaseField(generatedId = true)	
 	private int id;
 	
-	@DatabaseField	
+	@DatabaseField(columnName = "first_name")
 	private String firstName;
 	
-	@DatabaseField	
+	@DatabaseField(columnName = "second_name")
 	private String secondName;
 	
 	@DatabaseField	
@@ -33,7 +35,7 @@ public class PersonPojo implements Person {
 	private String phone;
 	
 	@DatabaseField	
-	private java.util.Date birthday;
+	private Date birthday;
 	
 	/*
 	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, columnName = "person")
@@ -77,7 +79,7 @@ public class PersonPojo implements Person {
 	}
 	
 	public void setPhoto(int value) {
-		setPhoto(new Integer(value));
+		setPhoto(Integer.valueOf(value));
 	}
 	
 	public void setPhoto(Integer value) {
@@ -89,7 +91,7 @@ public class PersonPojo implements Person {
 	}
 	
 	public void setAge(int value) {
-		setAge(new Integer(value));
+		setAge(Integer.valueOf(value));
 	}
 	
 	public void setAge(Integer value) {
@@ -108,11 +110,11 @@ public class PersonPojo implements Person {
 		return phone;
 	}
 	
-	public void setBirthday(java.util.Date value) {
+	public void setBirthday(Date value) {
 		this.birthday = value;
 	}
 	
-	public java.util.Date getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 	

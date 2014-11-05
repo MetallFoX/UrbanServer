@@ -3,7 +3,7 @@ package com.urban.data.dao;
 import java.util.Collection;
 
 
-public interface UrbanCriterion {
+public interface UrbanCriterion<T> {
 	
 	public UrbanCriterion and(UrbanCriterion l, UrbanCriterion r);
 	public UrbanCriterion or(UrbanCriterion l, UrbanCriterion r);
