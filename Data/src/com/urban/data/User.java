@@ -29,5 +29,7 @@ public interface User {
 	public void setPerson(Person person);
 	
 	public Set<Position> getSubscribes();
+
+    public void setSubscribes(Set<Position> positions);
 	
 }

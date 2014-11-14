@@ -100,7 +100,7 @@ CREATE TABLE ContactType (id number(10) NOT NULL, name varchar2(255), PRIMARY KE
 CREATE TABLE Organization_Contact (organization number(10) NOT NULL, contact number(10) NOT NULL, PRIMARY KEY (organization, contact));
 CREATE TABLE Event_Place (event number(10) NOT NULL, place number(10) NOT NULL, PRIMARY KEY (event, place));
 CREATE TABLE Organization_Place (organization number(10) NOT NULL, place number(10) NOT NULL, PRIMARY KEY (organization, place));
-CREATE TABLE Notification_Subscribe(position number(10) NOT NULL, "USER" number(10) NOT NULL, PRIMARY KEY (position, "USER"));
+CREATE TABLE Notification_Subscribe(id number(10) NOT NULL, position number(10) NOT NULL, "USER" number(10) NOT NULL, PRIMARY KEY (position, "USER"));
 
 ALTER TABLE Voting_Item ADD CONSTRAINT FKVoting_Ite446178 FOREIGN KEY (voting) REFERENCES Voting (id);
 ALTER TABLE Stuff_Category ADD CONSTRAINT FKStuff_Cate803293 FOREIGN KEY (parent) REFERENCES Stuff_Category (id);
@@ -165,7 +165,7 @@ CREATE SEQUENCE seq_ContactType;
 
 CREATE SEQUENCE hibernate_sequence;
 
----- Не нужно выполнять. Начало.
+---- пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ.
 
 CREATE OR REPLACE TRIGGER "TSQUSER" BEFORE
   INSERT ON "User" FOR EACH ROW DECLARE BEGIN
@@ -183,4 +183,4 @@ END;
 
 ALTER TRIGGER "TSQPERSON" ENABLE;
 
----- Не нужно выполнять. Конец.
+---- пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ

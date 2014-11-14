@@ -1,5 +1,6 @@
 package src.com.urban.data.sqlite.pojo;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Action;
@@ -16,10 +17,10 @@ public class ActionPojo implements Action {
 	@DatabaseField(generatedId = true)
 	private int id;
 	
-	@DatabaseField
+	@DatabaseField(dataType = DataType.DATE_STRING, format = "yyyy-MM-dd")
 	private Date startDate;
 	
-	@DatabaseField
+	@DatabaseField(dataType = DataType.DATE_STRING, format = "yyyy-MM-dd")
 	private Date endDate;
 	
 	@DatabaseField

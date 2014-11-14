@@ -18,7 +18,7 @@ public class UserPojo implements User {
 		
 	}
 	
-	@DatabaseField(generatedId = true)	
+	@DatabaseField(generatedId = true, allowGeneratedIdInsert = true)
 	private int id;
 	
 	@DatabaseField	
@@ -43,7 +43,7 @@ public class UserPojo implements User {
 	@DatabaseField	
 	private int IMEI;
 
-    @ForeignCollectionField(eager = true)
+    @ForeignCollectionField(eager = true, maxEagerForeignCollectionLevel = 2)
     private ForeignCollection<NotificationSubscribePojo> toSubscribeLinks;
 
     ForeignCollection<NotificationSubscribePojo> getSubscribeLinks() {
@@ -132,12 +132,21 @@ public class UserPojo implements User {
             };
         });
 
-        if (toSubscribeLinks == null) return null;
-
         for (NotificationSubscribePojo subscribeLink : toSubscribeLinks){
             posSet.add(subscribeLink.getPosition());
         }
         return posSet;
 	}
-	
+
+    @Override
+    public void setSubscribes(Set<Position> positions) {
+        toSubscribeLinks.clear();
+        for (Position pos : positions) {
+            NotificationSubscribePojo subscribe = new NotificationSubscribePojo();
+            subscribe.setUser(this);
+            subscribe.setPosition((PositionPojo)pos);
+            toSubscribeLinks.add(subscribe);
+        }
+    }
+
 }

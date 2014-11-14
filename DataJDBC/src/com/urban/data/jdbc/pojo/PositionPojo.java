@@ -104,7 +104,7 @@ public class PositionPojo implements Serializable, Position {
 		this.action = value;
 	}
 	
-	public Set getAction() {
+	public Set getActions() {
 		return action;
 	}
 	

@@ -70,6 +70,9 @@ CREATE TABLE ContactType (id INTEGER NOT NULL, name varchar(255), PRIMARY KEY (i
 CREATE TABLE Organization_Contact (organization integer(10) NOT NULL, contact integer(10) NOT NULL, PRIMARY KEY (organization, contact), FOREIGN KEY(organization) REFERENCES Organization(id), FOREIGN KEY(contact) REFERENCES Contact(id));
 CREATE TABLE Event_Place (event integer(10) NOT NULL, place integer(10) NOT NULL, PRIMARY KEY (event, place), FOREIGN KEY(event) REFERENCES Event(id), FOREIGN KEY(place) REFERENCES Place(id));
 CREATE TABLE Organization_Place (organization integer(10) NOT NULL, place integer(10) NOT NULL, PRIMARY KEY (organization, place), FOREIGN KEY(organization) REFERENCES Organization(id), FOREIGN KEY(place) REFERENCES Place(id));
-CREATE TABLE Notification_Subscribe (position integer(10) NOT NULL, user integer(10) NOT NULL, PRIMARY KEY (position, user), FOREIGN KEY(position) REFERENCES Position(id), FOREIGN KEY(user) REFERENCES User(id));
+CREATE TABLE Notification_Subscribe (id INTEGER NOT NULL, position integer(10) NOT NULL, user integer(10) NOT NULL, PRIMARY KEY (position, user), FOREIGN KEY(position) REFERENCES Position(id), FOREIGN KEY(user) REFERENCES User(id));
+CREATE UNIQUE INDEX Notification_SubscribeIndex on Notification_Subscribe (position, user);
+
+
 
 

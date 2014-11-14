@@ -69,7 +69,7 @@ public class PositionPojo implements Position {
         return organization;
     }
 
-    public void setPage(java.util.Set value) {
+    public void setPage(Set<Page> value) {
         //this.page = value;
     }
 
@@ -88,7 +88,7 @@ public class PositionPojo implements Position {
 	}
 
 	@Override
-	public Set<Action> getAction() {
+	public Set<Action> getActions() {
 		return new HashSet<Action>(actions);
 	}
 

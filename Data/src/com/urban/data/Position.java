@@ -14,7 +14,7 @@ public interface Position {
 	
 	public Set<Page> getPage();
 	
-	public Set<Action> getAction();
+	public Set<Action> getActions();
 	
 	public Set<Advertising> getAdvertising();
 	

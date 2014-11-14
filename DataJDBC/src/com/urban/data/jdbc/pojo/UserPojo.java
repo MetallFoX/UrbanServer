@@ -1,10 +1,13 @@
 package com.urban.data.jdbc.pojo;
 
 import com.urban.data.Person;
+import com.urban.data.Position;
 import com.urban.data.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="`User`")
@@ -120,13 +123,11 @@ public class UserPojo implements Serializable, User {
 		return String.valueOf(getId());
 	}
 	
-	public void setSubscribes(java.util.Set value) {
+	public void setSubscribes(Set<Position> value) {
 		this.subscribes = value;
 	}
 	
-	public java.util.Set getSubscribes() {
+	public Set<Position> getSubscribes() {
 		return subscribes;
 	}
-
-	
 }

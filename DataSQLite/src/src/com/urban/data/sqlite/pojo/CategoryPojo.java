@@ -8,7 +8,10 @@ import com.urban.data.Advertising;
 import com.urban.data.Category;
 import com.urban.data.Position;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 @DatabaseTable(tableName="Category")
 public class CategoryPojo implements Category {
@@ -99,8 +102,8 @@ public class CategoryPojo implements Category {
     	return posSet;
     }
     
-    public Set<Advertising> getAdvertisings() {
-        /*SortedSet<Advertising> posSet = new TreeSet<Advertising>(new Comparator<Advertising>(){
+    public Set<Advertising> getAdvertisements() {
+        SortedSet<Advertising> advertisements = new TreeSet<Advertising>(new Comparator<Advertising>(){
         	public int compare(Advertising pos1, Advertising pos2){
         		if (pos1 == pos2)
         			return 0;
@@ -108,15 +111,16 @@ public class CategoryPojo implements Category {
         			return 1;
         		if (pos2 == null)
         			return -1;
-        		return pos1.getId().compareTo(pos2.getId());
+                //Сортировка по убыванию приоритета.
+                //TODO: Добавить unique constraint на пару category + priority или добавить ещё критерий сравнения?
+        		return pos2.getPriority() - pos1.getPriority();
         	};
-        });*/
-    	//TODO: think about special order here. Do we need it?
-    	Set<Advertising> elems = new HashSet<Advertising>();
+        });
+        if (toAdvertLinks == null) return null;
         for (CategoryAdvertisingLinkPojo link: toAdvertLinks){
-        	elems.add(link.getAdvertising());
+            advertisements.add(link.getAdvertising());
         }
-    	return elems;
+    	return advertisements;
     }
 
 

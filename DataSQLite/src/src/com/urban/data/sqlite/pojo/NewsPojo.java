@@ -1,9 +1,12 @@
 package src.com.urban.data.sqlite.pojo;
 
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.News;
+
+import java.util.Date;
 
 @DatabaseTable(tableName="News")
 public class NewsPojo implements News {
@@ -14,8 +17,8 @@ public class NewsPojo implements News {
 	@DatabaseField(generatedId = true)
 	private int id;
 	
-	@DatabaseField	
-	private java.util.Date date;
+	@DatabaseField(dataType = DataType.DATE_STRING, format = "yyyy-MM-dd")
+	private Date date;
 	
 	@DatabaseField	
 	private String text;

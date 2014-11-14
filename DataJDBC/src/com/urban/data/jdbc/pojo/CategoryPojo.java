@@ -77,11 +77,11 @@ public class CategoryPojo implements Serializable, Category {
 		return order;
 	}
 	
-	public void setAdvertisings(java.util.Set value) {
+	public void setAdvertisements(java.util.Set value) {
 		this.advertising = value;
 	}
 	
-	public java.util.Set getAdvertisings() {
+	public java.util.Set getAdvertisements() {
 		return advertising;
 	}
 	

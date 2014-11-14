@@ -12,7 +12,7 @@ public interface Category {
 	
 	public int getOrder();
 	
-	public Set<Advertising> getAdvertisings();
+	public Set<Advertising> getAdvertisements();
 	
 	public Set<Position> getPositions();
 	
