@@ -4,6 +4,8 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Page;
 
+import java.util.Set;
+
 @DatabaseTable(tableName="Page")
 public class PagePojo implements Page {
 	
@@ -18,7 +20,7 @@ public class PagePojo implements Page {
 	private Integer type;
 	
 	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, canBeNull = true, columnName = "page")
-	private java.util.Set position = new java.util.HashSet();
+	private Set organization = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -44,12 +46,12 @@ public class PagePojo implements Page {
 		return type;
 	}
 	
-	public void setPosition(java.util.Set value) {
-		this.position = value;
+	public void setOrganization(Set value) {
+		this.organization = value;
 	}
 	
-	public java.util.Set getPosition() {
-		return position;
+	public Set getOrganizations() {
+		return organization;
 	}
 	
 }

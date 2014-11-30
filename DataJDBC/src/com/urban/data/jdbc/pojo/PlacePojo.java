@@ -4,6 +4,8 @@ import com.urban.data.Place;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Place")
@@ -31,18 +33,18 @@ public class PlacePojo implements Serializable, Place {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinTable(name="Event_Place", joinColumns={ @JoinColumn(name="Place") }, inverseJoinColumns={ @JoinColumn(name="Event") })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set event = new java.util.HashSet();
+	private Set event = new java.util.HashSet();
 	
 	@ManyToMany(targetEntity=OrganizationPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinTable(name="Organization_Place", joinColumns={ @JoinColumn(name="Place") }, inverseJoinColumns={ @JoinColumn(name="Organization") })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set organization = new java.util.HashSet();
+	private Set organization = new java.util.HashSet();
 	
 	@OneToMany(mappedBy="place", targetEntity=AddressPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set address = new java.util.HashSet();
+	private Set address = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -76,29 +78,29 @@ public class PlacePojo implements Serializable, Place {
 		return alt;
 	}
 	
-	public void setEvent(java.util.Set value) {
+	public void setEvent(Set value) {
 		this.event = value;
 	}
 	
-	public java.util.Set getEvent() {
+	public Set getEvent() {
 		return event;
 	}
 	
 	
-	public void setOrganization(java.util.Set value) {
+	public void setOrganization(Set value) {
 		this.organization = value;
 	}
 	
-	public java.util.Set getOrganization() {
+	public Set getOrganizations() {
 		return organization;
 	}
 	
 	
-	public void setAddress(java.util.Set value) {
+	public void setAddress(Set value) {
 		this.address = value;
 	}
 	
-	public java.util.Set getAddress() {
+	public Set getAddress() {
 		return address;
 	}
 	

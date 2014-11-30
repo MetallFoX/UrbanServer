@@ -5,8 +5,8 @@ import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.urban.data.Organization;
 import com.urban.data.Person;
-import com.urban.data.Position;
 import com.urban.data.User;
 
 import java.util.*;
@@ -119,32 +119,32 @@ public class UserPojo implements User {
 	}
 
 	@Override
-	public Set<Position> getSubscribes() {
-        SortedSet<Position> posSet = new TreeSet<Position>(new Comparator<Position>(){
-            public int compare(Position pos1, Position pos2){
-                if (pos1 == pos2)
+	public Set<Organization> getSubscribes() {
+        SortedSet<Organization> orgSet = new TreeSet<Organization>(new Comparator<Organization>(){
+            public int compare(Organization org1, Organization org2){
+                if (org1 == org2)
                     return 0;
-                if (pos1 == null)
+                if (org1 == null)
                     return 1;
-                if (pos2 == null)
+                if (org2 == null)
                     return -1;
-                return pos2.getId() - pos1.getId();
+                return org2.getId() - org1.getId();
             };
         });
 
         for (NotificationSubscribePojo subscribeLink : toSubscribeLinks){
-            posSet.add(subscribeLink.getPosition());
+            orgSet.add(subscribeLink.getOrganization());
         }
-        return posSet;
+        return orgSet;
 	}
 
     @Override
-    public void setSubscribes(Set<Position> positions) {
+    public void setSubscribes(Set<Organization> organizations) {
         toSubscribeLinks.clear();
-        for (Position pos : positions) {
+        for (Organization org : organizations) {
             NotificationSubscribePojo subscribe = new NotificationSubscribePojo();
             subscribe.setUser(this);
-            subscribe.setPosition((PositionPojo)pos);
+            subscribe.setOrganization((OrganizationPojo) org);
             toSubscribeLinks.add(subscribe);
         }
     }

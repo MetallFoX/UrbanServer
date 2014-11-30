@@ -4,6 +4,8 @@ import com.urban.data.Page;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Page")
@@ -21,10 +23,10 @@ public class PagePojo implements Serializable, Page {
 	@Column(name="type", nullable=true, length=10)	
 	private Integer type;
 	
-	@ManyToMany(mappedBy="page", targetEntity=PositionPojo.class)	
+	@ManyToMany(mappedBy="page", targetEntity=OrganizationPojo.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set position = new java.util.HashSet();
+	private Set organization = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -50,12 +52,12 @@ public class PagePojo implements Serializable, Page {
 		return type;
 	}
 	
-	public void setPosition(java.util.Set value) {
-		this.position = value;
+	public void setOrganization(Set value) {
+		this.organization = value;
 	}
 	
-	public java.util.Set getPosition() {
-		return position;
+	public Set getOrganizations() {
+		return organization;
 	}
 	
 	

@@ -6,7 +6,7 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Advertising;
 import com.urban.data.Category;
-import com.urban.data.Position;
+import com.urban.data.Organization;
 
 import java.util.Comparator;
 import java.util.Set;
@@ -33,16 +33,16 @@ public class CategoryPojo implements Category {
     private int order;
 	
     @ForeignCollectionField(eager = true)
-    private ForeignCollection<CategoryPositionLinkPojo> toPositionsLinks;
+    private ForeignCollection<CategoryOrganizationLinkPojo> toOrganizationsLinks;
     
     @ForeignCollectionField(eager = true)
     private ForeignCollection<CategoryAdvertisingLinkPojo> toAdvertLinks;
     
-	ForeignCollection<CategoryPositionLinkPojo> getPositionLinks() {
-		return toPositionsLinks;
+	ForeignCollection<CategoryOrganizationLinkPojo> getOrganizationLinks() {
+		return toOrganizationsLinks;
 	}
 
-    private java.util.Set<PositionPojo> position = new java.util.HashSet<PositionPojo>();
+    private Set<OrganizationPojo> organization = new java.util.HashSet<OrganizationPojo>();
 
     @Override
     public int getId() {
@@ -75,45 +75,45 @@ public class CategoryPojo implements Category {
     }
 
     /* (non-Javadoc)
-     * @see com.urban.entity.za.Category#setPosition(java.util.Set)
+     * @see com.urban.entity.za.Category#setOrganization(Set)
      */
     /*@Override
-    public void addPosition(Position value) {
-        position.add(value);
+    public void addOrganization(Organization value) {
+        organization.add(value);
     }*/
 
     @Override
-    public Set getPositions() {
-        SortedSet<Position> posSet = new TreeSet<Position>(new Comparator<Position>(){
-        	public int compare(Position pos1, Position pos2){
-        		if (pos1 == pos2)
+    public Set getOrganizations() {
+        SortedSet<Organization> posSet = new TreeSet<Organization>(new Comparator<Organization>(){
+        	public int compare(Organization org1, Organization org2){
+        		if (org1 == org2)
         			return 0;
-        		if (pos1 == null)
+        		if (org1 == null)
         			return 1;
-        		if (pos2 == null)
+        		if (org2 == null)
         			return -1;
-        		return pos2.getId() - pos1.getId();
+        		return org2.getId() - org1.getId();
         	};
         });
-        if (toPositionsLinks == null) return null;
-        for (CategoryPositionLinkPojo posLink: toPositionsLinks){
-        	posSet.add(posLink.getPosition());
+        if (toOrganizationsLinks == null) return null;
+        for (CategoryOrganizationLinkPojo orgLinks: toOrganizationsLinks){
+        	posSet.add(orgLinks.getOrganization());
         }
     	return posSet;
     }
     
     public Set<Advertising> getAdvertisements() {
         SortedSet<Advertising> advertisements = new TreeSet<Advertising>(new Comparator<Advertising>(){
-        	public int compare(Advertising pos1, Advertising pos2){
-        		if (pos1 == pos2)
+        	public int compare(Advertising org1, Advertising org2){
+        		if (org1 == org2)
         			return 0;
-        		if (pos1 == null)
+        		if (org1 == null)
         			return 1;
-        		if (pos2 == null)
+        		if (org2 == null)
         			return -1;
                 //Сортировка по убыванию приоритета.
                 //TODO: Добавить unique constraint на пару category + priority или добавить ещё критерий сравнения?
-        		return pos2.getPriority() - pos1.getPriority();
+        		return org2.getPriority() - org1.getPriority();
         	};
         });
         if (toAdvertLinks == null) return null;

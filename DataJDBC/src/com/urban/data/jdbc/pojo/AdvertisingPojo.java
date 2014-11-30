@@ -4,6 +4,8 @@ import com.urban.data.Advertising;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Advertising")
@@ -30,16 +32,16 @@ public class AdvertisingPojo implements Serializable, Advertising {
 	@Basic(fetch=FetchType.LAZY)	
 	private ImagePojo image;
 	
-	@ManyToOne(targetEntity=PositionPojo.class)	
+	@ManyToOne(targetEntity=OrganizationPojo.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="position", referencedColumnName="id") })	
+	@JoinColumns({ @JoinColumn(name="organization", referencedColumnName="id") })
 	@Basic(fetch=FetchType.LAZY)	
-	private PositionPojo position;
+	private OrganizationPojo organization;
 	
 	@ManyToMany(mappedBy="advertising", targetEntity=CategoryPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set category = new java.util.HashSet();
+	private Set category = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -65,11 +67,11 @@ public class AdvertisingPojo implements Serializable, Advertising {
 		return text;
 	}
 	
-	public void setCategory(java.util.Set value) {
+	public void setCategory(Set value) {
 		this.category = value;
 	}
 	
-	public java.util.Set getCategory() {
+	public Set getCategories() {
 		return category;
 	}
 	
@@ -82,12 +84,12 @@ public class AdvertisingPojo implements Serializable, Advertising {
 		return image;
 	}
 	
-	public void setPosition(PositionPojo value) {
-		this.position = value;
+	public void setOrganization(OrganizationPojo value) {
+		this.organization = value;
 	}
 	
-	public PositionPojo getPosition() {
-		return position;
+	public OrganizationPojo getOrganization() {
+		return organization;
 	}
 	
 	public String toString() {

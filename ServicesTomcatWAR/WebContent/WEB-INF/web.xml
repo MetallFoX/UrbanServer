@@ -49,7 +49,7 @@
     <description>Register listener servlet</description>
     <display-name>RegisterListener</display-name>
     <servlet-name>RegisterListener</servlet-name>
-    <servlet-class>com.urban.services.notification.impl.RegisterServlet</servlet-class>
+    <servlet-class>com.urban.services.notification.impl.Subscribe</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet>

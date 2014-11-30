@@ -1,7 +1,7 @@
 package com.urban.data.jdbc.pojo;
 
+import com.urban.data.Organization;
 import com.urban.data.Person;
-import com.urban.data.Position;
 import com.urban.data.User;
 
 import javax.persistence.*;
@@ -45,11 +45,11 @@ public class UserPojo implements Serializable, User {
 	@Column(name="IMEI", nullable=false, length=20)	
 	private int IMEI;
 	
-	@ManyToMany(targetEntity=PositionPojo.class)	
+	@ManyToMany(targetEntity=OrganizationPojo.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinTable(name="Notification_Subscribe", joinColumns={ @JoinColumn(name="user") }, inverseJoinColumns={ @JoinColumn(name="position") })	
+	@JoinTable(name="Notification_Subscribe", joinColumns={ @JoinColumn(name="user") }, inverseJoinColumns={ @JoinColumn(name="organization") })
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set subscribes = new java.util.HashSet();
+	private Set subscribes = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -123,11 +123,11 @@ public class UserPojo implements Serializable, User {
 		return String.valueOf(getId());
 	}
 	
-	public void setSubscribes(Set<Position> value) {
+	public void setSubscribes(Set<Organization> value) {
 		this.subscribes = value;
 	}
 	
-	public Set<Position> getSubscribes() {
+	public Set<Organization> getSubscribes() {
 		return subscribes;
 	}
 }

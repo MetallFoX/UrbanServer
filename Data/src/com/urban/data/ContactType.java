@@ -14,7 +14,7 @@ public interface ContactType {
 	
 	
 	public enum Type {
-	    PHONE(1, "Телефон"), EMAIL(2, "e-mail"), WEB(3, "Сайт"), SKYPE(4, "Skype");
+	    PHONE(1, "РўРµР»РµС„РѕРЅ"), EMAIL(2, "e-mail"), WEB(3, "РЎР°Р№С‚"), SKYPE(4, "Skype");
 
 	    private static Map<Long, Type> searchMap = new HashMap<Long, Type>();
 

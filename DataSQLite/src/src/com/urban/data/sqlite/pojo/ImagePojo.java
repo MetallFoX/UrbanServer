@@ -53,7 +53,7 @@ public class ImagePojo implements Image {
 	}
 
 	@Override
-	public Set<Organization> getOrganization() {
+	public Set<Organization> getOrganizations() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -37,6 +37,12 @@ public class OrganizationPojo implements Organization {
     @ForeignCollectionField(eager = true)
     private ForeignCollection<OrganizationEventLinkPojo> toEvents;
 
+    @ForeignCollectionField(eager = true)
+    private ForeignCollection<ActionPojo> actions;
+
+    @ForeignCollectionField(eager = true)
+    private ForeignCollection<NotificationSubscribePojo> toSubscribeLinks;
+
     private void setId(int value) {
         this.id = value;
     }
@@ -104,10 +110,38 @@ public class OrganizationPojo implements Organization {
 		return events;
 	}
 
-	@Override
-	public Set<Position> getPositions() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Set<Category> getCategory() {
+        return null;//return new HashSet<Category>(categories);
+    }
+
+    @Override
+    public Set<Action> getActions() {
+        return new HashSet<Action>(actions);
+    }
+
+    @Override
+    public Set<Advertising> getAdvertising() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public Set<Page> getPage() {
+        return null;//return new HashSet<Page>(pages);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Organization) {
+            return id.equals((((Organization) obj).getId()));
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
 
 }

@@ -10,7 +10,7 @@ public interface Event {
 	
 	public Image getImage();
 	
-	public Set<Organization> getOrganization();
+	public Set<Organization> getOrganizations();
 	
 	public Set<Place> getPlace();
 	

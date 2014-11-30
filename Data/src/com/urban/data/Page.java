@@ -8,6 +8,6 @@ public interface Page {
 	
 	public Integer getType();
 	
-	public Set<Position> getPosition();
+	public Set<Organization> getOrganizations();
 	
 }

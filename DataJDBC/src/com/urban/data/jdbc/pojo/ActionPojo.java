@@ -28,11 +28,11 @@ public class ActionPojo implements Serializable, Action {
 	@Column(name="subject", nullable=false, length=255)	
 	private String subject;
 	
-	@ManyToOne(targetEntity=PositionPojo.class)	
+	@ManyToOne(targetEntity=OrganizationPojo.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="position", referencedColumnName="id") })	
+	@JoinColumns({ @JoinColumn(name="organization", referencedColumnName="id") })
 	@Basic(fetch=FetchType.LAZY)	
-	private PositionPojo position;
+	private OrganizationPojo organization;
 	
 	private void setId(int value) {
 		this.id = value;
@@ -66,12 +66,12 @@ public class ActionPojo implements Serializable, Action {
 		return subject;
 	}
 	
-	public void setPosition(PositionPojo value) {
-		this.position = value;
+	public void setOrganization(OrganizationPojo value) {
+		this.organization = value;
 	}
 	
-	public PositionPojo getPosition() {
-		return position;
+	public OrganizationPojo getOrganization() {
+		return organization;
 	}
 	
 	public String toString() {

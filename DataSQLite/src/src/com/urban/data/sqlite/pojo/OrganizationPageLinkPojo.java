@@ -3,21 +3,21 @@ package src.com.urban.data.sqlite.pojo;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName="Position_Page")
-public class PositionPageLinkPojo {
+@DatabaseTable(tableName="Organization_Page")
+public class OrganizationPageLinkPojo {
 	
-	@DatabaseField(canBeNull = false, foreign = true, columnName = "position")
-    private PositionPojo position;
+	@DatabaseField(canBeNull = false, foreign = true, columnName = "organization")
+    private OrganizationPojo organization;
 	
 	@DatabaseField(canBeNull = false, foreign = true, columnName = "page", foreignAutoRefresh = true)
     private PagePojo page;
 
-	public PositionPojo getPosition() {
-		return position;
+	public OrganizationPojo getOrganization() {
+		return organization;
 	}
 
-	public void setPosition(PositionPojo position) {
-		this.position = position;
+	public void setOrganization(OrganizationPojo organization) {
+		this.organization = organization;
 	}
 
 	public PagePojo getPage() {

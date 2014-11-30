@@ -38,9 +38,8 @@ public class JDBCDAO implements IDAO {
 		classes.put(Page.class, PagePojo.class);
 		classes.put(Person.class, PersonPojo.class);
 		classes.put(Photo.class, PhotoPojo.class);
-		classes.put(PhotoGallary.class, PhotoGallaryPojo.class);
+		classes.put(PhotoGallery.class, PhotoGalleryPojo.class);
 		classes.put(Place.class, PlacePojo.class);
-		classes.put(Position.class, PositionPojo.class);
 		classes.put(Stuff.class, StuffPojo.class);
 		classes.put(StuffCategory.class, StuffCategoryPojo.class);
 		classes.put(User.class, UserPojo.class);

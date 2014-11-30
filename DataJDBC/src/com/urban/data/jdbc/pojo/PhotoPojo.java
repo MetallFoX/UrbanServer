@@ -24,11 +24,11 @@ public class PhotoPojo implements Serializable, Photo {
 	@Column(name="url", nullable=false, length=255)	
 	private String url;
 	
-	@ManyToOne(targetEntity=PhotoGallaryPojo.class)	
+	@ManyToOne(targetEntity=PhotoGalleryPojo.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="gallery", referencedColumnName="id") })	
 	@Basic(fetch=FetchType.LAZY)	
-	private PhotoGallaryPojo gallery;
+	private PhotoGalleryPojo gallery;
 	
 	private void setId(int value) {
 		this.id = value;
@@ -54,11 +54,11 @@ public class PhotoPojo implements Serializable, Photo {
 		return url;
 	}
 	
-	public void setGallery(PhotoGallaryPojo value) {
+	public void setGallery(PhotoGalleryPojo value) {
 		this.gallery = value;
 	}
 	
-	public PhotoGallaryPojo getGallery() {
+	public PhotoGalleryPojo getGallery() {
 		return gallery;
 	}
 	

@@ -59,7 +59,6 @@ public class UpdateUserServlet extends HttpServlet {
 						personPojo.setSecondName(outerPerson.getSecondName());
 						personPojo.setSurname(outerPerson.getSurname());
 						personPojo.setBirthday(outerPerson.getBirthday());
-						personPojo.setAge(outerPerson.getAge());
 						personPojo.setPhone(outerPerson.getPhone());
 						personPojo.setPhoto(outerPerson.getPhoto());
 					}

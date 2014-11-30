@@ -2,12 +2,14 @@ package src.com.urban.data.sqlite.pojo;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.urban.data.PhotoGallary;
+import com.urban.data.PhotoGallery;
 
-@DatabaseTable(tableName="PhotoGallary")
-public class PhotoGallaryPojo implements PhotoGallary {
+import java.util.Set;
+
+@DatabaseTable(tableName="PhotoGallery")
+public class PhotoGalleryPojo implements PhotoGallery {
 	
-	public PhotoGallaryPojo() {
+	public PhotoGalleryPojo() {
 	
 	}
 	
@@ -21,7 +23,7 @@ public class PhotoGallaryPojo implements PhotoGallary {
 	private String description;
 	
 	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, canBeNull = true, columnName = "gallery")
-	private java.util.Set photo = new java.util.HashSet();
+	private Set photo = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -47,11 +49,11 @@ public class PhotoGallaryPojo implements PhotoGallary {
 		return description;
 	}
 	
-	public void setPhoto(java.util.Set value) {
+	public void setPhoto(Set value) {
 		this.photo = value;
 	}
 	
-	public java.util.Set getPhoto() {
+	public Set getPhoto() {
 		return photo;
 	}
 	

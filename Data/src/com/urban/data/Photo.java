@@ -8,6 +8,6 @@ public interface Photo {
 	
 	public String getUrl();
 	
-	public PhotoGallary getGallery();
+	public PhotoGallery getGallery();
 	
 }

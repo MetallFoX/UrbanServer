@@ -11,7 +11,7 @@ public interface Image {
 	
 	public Set<Advertising> getAdvertising();
 	
-	public Set<Organization> getOrganization();
+	public Set<Organization> getOrganizations();
 	
 	public Set<Event> getEvent();
 	

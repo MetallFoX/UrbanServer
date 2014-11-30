@@ -2,7 +2,7 @@ package com.urban.data;
 
 import java.util.Set;
 
-public interface PhotoGallary {
+public interface PhotoGallery {
 
 	public int getId();
 	

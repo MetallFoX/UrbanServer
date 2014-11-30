@@ -39,10 +39,9 @@
 		<mapping class="com.urban.data.jdbc.pojo.OrganizationPojo"/>
 		<mapping class="com.urban.data.jdbc.pojo.PagePojo"/>
 		<mapping class="com.urban.data.jdbc.pojo.PersonPojo"/>
-		<mapping class="com.urban.data.jdbc.pojo.PhotoGallaryPojo"/>
+		<mapping class="com.urban.data.jdbc.pojo.PhotoGalleryPojo"/>
 		<mapping class="com.urban.data.jdbc.pojo.PhotoPojo"/>
 		<mapping class="com.urban.data.jdbc.pojo.PlacePojo"/>
-		<mapping class="com.urban.data.jdbc.pojo.PositionPojo"/>
 		<mapping class="com.urban.data.jdbc.pojo.StuffCategoryPojo"/>
 		<mapping class="com.urban.data.jdbc.pojo.StuffPojo"/>
 		<mapping class="com.urban.data.jdbc.pojo.UserPojo"/>

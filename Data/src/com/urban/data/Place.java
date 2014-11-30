@@ -14,7 +14,7 @@ public interface Place {
 	
 	public Set<Event> getEvent();
 	
-	public Set<Organization> getOrganization();
+	public Set<Organization> getOrganizations();
 	
 	public Set<Address> getAddress();
 	

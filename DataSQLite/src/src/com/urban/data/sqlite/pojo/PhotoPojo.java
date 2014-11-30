@@ -23,7 +23,7 @@ public class PhotoPojo implements Serializable, Photo {
 	private String url;
 	
 	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, columnName = "gallery")
-	private PhotoGallaryPojo gallery;
+	private PhotoGalleryPojo gallery;
 	
 	private void setId(int value) {
 		this.id = value;
@@ -49,11 +49,11 @@ public class PhotoPojo implements Serializable, Photo {
 		return url;
 	}
 	
-	public void setGallery(PhotoGallaryPojo value) {
+	public void setGallery(PhotoGalleryPojo value) {
 		this.gallery = value;
 	}
 	
-	public PhotoGallaryPojo getGallery() {
+	public PhotoGalleryPojo getGallery() {
 		return gallery;
 	}
 	

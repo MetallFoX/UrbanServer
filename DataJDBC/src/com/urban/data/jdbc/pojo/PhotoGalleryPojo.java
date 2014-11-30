@@ -1,15 +1,17 @@
 package com.urban.data.jdbc.pojo;
 
-import com.urban.data.PhotoGallary;
+import com.urban.data.PhotoGallery;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="PhotoGallary")
+@Table(name="PhotoGallery")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class PhotoGallaryPojo implements Serializable, PhotoGallary {
-	public PhotoGallaryPojo() {
+public class PhotoGalleryPojo implements Serializable, PhotoGallery {
+	public PhotoGalleryPojo() {
 	}
 	
 	@Column(name="id", nullable=false)	
@@ -27,7 +29,7 @@ public class PhotoGallaryPojo implements Serializable, PhotoGallary {
 	@OneToMany(mappedBy="gallery", targetEntity=PhotoPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set photo = new java.util.HashSet();
+	private Set photo = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -53,11 +55,11 @@ public class PhotoGallaryPojo implements Serializable, PhotoGallary {
 		return description;
 	}
 	
-	public void setPhoto(java.util.Set value) {
+	public void setPhoto(Set value) {
 		this.photo = value;
 	}
 	
-	public java.util.Set getPhoto() {
+	public Set getPhoto() {
 		return photo;
 	}
 	

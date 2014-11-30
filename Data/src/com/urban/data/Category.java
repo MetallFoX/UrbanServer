@@ -14,6 +14,6 @@ public interface Category {
 	
 	public Set<Advertising> getAdvertisements();
 	
-	public Set<Position> getPositions();
+	public Set<Organization> getOrganizations();
 	
 }

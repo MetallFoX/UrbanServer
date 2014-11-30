@@ -62,7 +62,7 @@ public class EventPojo implements Event {
 	}
 
 	@Override
-	public Set<Organization> getOrganization() {
+	public Set<Organization> getOrganizations() {
 		// TODO Auto-generated method stub
 		return null;
 	}

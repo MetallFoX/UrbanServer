@@ -4,6 +4,8 @@ import com.urban.data.NewsCategory;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="News_Category")
@@ -24,7 +26,7 @@ public class NewsCategoryPojo implements Serializable, NewsCategory {
 	@OneToMany(mappedBy="category", targetEntity=NewsPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set news = new java.util.HashSet();
+	private Set news = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -46,11 +48,11 @@ public class NewsCategoryPojo implements Serializable, NewsCategory {
 		return name;
 	}
 	
-	public void setNews(java.util.Set value) {
+	public void setNews(Set value) {
 		this.news = value;
 	}
 	
-	public java.util.Set getNews() {
+	public Set getNews() {
 		return news;
 	}
 	

@@ -24,8 +24,7 @@ public class UrbanPersistentManager /*extends PersistentManager*/ {
 		configuration.addAnnotatedClass(CartPojo.class);
 		configuration.addAnnotatedClass(OrganizationPhonePojo.class);
 		configuration.addAnnotatedClass(PhotoPojo.class);
-		configuration.addAnnotatedClass(PhotoGallaryPojo.class);
-		configuration.addAnnotatedClass(PositionPojo.class);
+		configuration.addAnnotatedClass(PhotoGalleryPojo.class);
 		configuration.addAnnotatedClass(PagePojo.class);
 		configuration.addAnnotatedClass(CategoryPojo.class);
 		configuration.addAnnotatedClass(NewsCategoryPojo.class);

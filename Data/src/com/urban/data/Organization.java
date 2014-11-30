@@ -17,7 +17,13 @@ public interface Organization {
 	public Set<Contact> getContacts();
 	
 	public Set<Place> getPlaces();
-	
-	public Set<Position> getPositions();
-	
+
+    public Set<Page> getPage();
+
+    public Set<Category> getCategory();
+
+    public Set<Action> getActions();
+
+    public Set<Advertising> getAdvertising();
+
 }

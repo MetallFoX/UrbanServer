@@ -4,6 +4,8 @@ import com.urban.data.Organization;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Organization")
@@ -34,24 +36,42 @@ public class OrganizationPojo implements Serializable, Organization {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinTable(name="Event_Organization", joinColumns={ @JoinColumn(name="organization") }, inverseJoinColumns={ @JoinColumn(name="event") })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set event = new java.util.HashSet();
+	private Set event = new java.util.HashSet();
 	
 	@ManyToMany(targetEntity=ContactPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinTable(name="Organization_Contact", joinColumns={ @JoinColumn(name="Organization") }, inverseJoinColumns={ @JoinColumn(name="Contact") })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set contact = new java.util.HashSet();
+	private Set contact = new java.util.HashSet();
 	
 	@ManyToMany(mappedBy="organization", targetEntity=PlacePojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set place = new java.util.HashSet();
-	
-	
-	@OneToMany(mappedBy="organization", targetEntity=PositionPojo.class)	
+	private Set place = new java.util.HashSet();
+
+	@OneToMany(mappedBy="organization", targetEntity=OrganizationPojo.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set position = new java.util.HashSet();
+	private Set organization = new java.util.HashSet();
+
+    @ManyToMany(targetEntity=PagePojo.class)
+    @org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})
+    @JoinTable(name="Organization_Page", joinColumns={ @JoinColumn(name="Organization") }, inverseJoinColumns={ @JoinColumn(name="page") })
+    @org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)
+    private Set page = new java.util.HashSet();
+
+    @OneToMany(mappedBy="organization", targetEntity=ActionPojo.class)
+    @org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})
+    @org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)
+    private Set action = new java.util.HashSet();
+
+    @OneToMany(mappedBy="organization", targetEntity=AdvertisingPojo.class)
+    @org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})
+    @org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)
+    private Set advertising = new java.util.HashSet();
+
+
+
 	
 	private void setId(int value) {
 		this.id = value;
@@ -81,11 +101,11 @@ public class OrganizationPojo implements Serializable, Organization {
 		return description;
 	}
 	
-	public void setEvents(java.util.Set value) {
+	public void setEvents(Set value) {
 		this.event = value;
 	}
 	
-	public java.util.Set getEvents() {
+	public Set getEvents() {
 		return event;
 	}
 	
@@ -98,31 +118,56 @@ public class OrganizationPojo implements Serializable, Organization {
 		return logo;
 	}
 	
-	public void setContacts(java.util.Set value) {
+	public void setContacts(Set value) {
 		this.contact = value;
 	}
 	
-	public java.util.Set getContacts() {
+	public Set getContacts() {
 		return contact;
 	}
 	
 	
-	public void setPlaces(java.util.Set value) {
+	public void setPlaces(Set value) {
 		this.place = value;
 	}
 	
-	public java.util.Set getPlaces() {
+	public Set getPlaces() {
 		return place;
 	}
 	
-	public void setPositions(java.util.Set value) {
-		this.position = value;
-	}
-	
-	public java.util.Set getPositions() {
-		return position;
-	}
-	
+    public void setPage(Set value) {
+        this.page = value;
+    }
+
+    public Set getPage() {
+        return page;
+    }
+
+    public void setCategory(Set value) {
+        //this.category = value;
+    }
+
+    public Set getCategory() {
+        //return category;
+        return null;
+    }
+
+    public void setActions(Set value) {
+        this.action = value;
+    }
+
+    public Set getActions() {
+        return action;
+    }
+
+    public void setAdvertising(Set value) {
+        this.advertising = value;
+    }
+
+    public Set getAdvertising() {
+        return advertising;
+    }
+
 	
 	public String toString() {
 		return String.valueOf(getId());

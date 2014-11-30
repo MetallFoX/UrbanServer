@@ -10,10 +10,10 @@ public interface Advertising {
 	
 	public String getText();
 	
-	public Set<Category> getCategory();
+	public Set<Category> getCategories();
 	
 	public Image getImage();
 
-	public Position getPosition();
+	public Organization getOrganization();
 	
 }

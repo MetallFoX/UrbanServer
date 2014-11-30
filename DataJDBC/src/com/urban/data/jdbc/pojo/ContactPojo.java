@@ -4,6 +4,8 @@ import com.urban.data.Contact;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Contact")
@@ -30,7 +32,7 @@ public class ContactPojo implements Serializable, Contact {
 	@ManyToMany(mappedBy="contact", targetEntity=OrganizationPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set organization = new java.util.HashSet();
+	private Set organization = new java.util.HashSet();
 	
 	private void setId(int value) {
 		setId(new Integer(value));
@@ -56,11 +58,11 @@ public class ContactPojo implements Serializable, Contact {
 		return contact;
 	}
 	
-	public void setOrganization(java.util.Set value) {
+	public void setOrganization(Set value) {
 		this.organization = value;
 	}
 	
-	public java.util.Set getOrganization() {
+	public Set getOrganizations() {
 		return organization;
 	}
 	

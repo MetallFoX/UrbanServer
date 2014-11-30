@@ -8,7 +8,7 @@ public interface Contact {
 	
 	public String getContact();
 	
-	public Set<Organization> getOrganization();
+	public Set<Organization> getOrganizations();
 	
 	public ContactType getContactType();
 	

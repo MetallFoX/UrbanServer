@@ -18,8 +18,8 @@ public class AdvertisingPojo implements Advertising {
     @DatabaseField(generatedId = true)
     private Integer id;
 
-    @DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, canBeNull = true, columnName = "position")
-    private PositionPojo position;
+    @DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, canBeNull = true, columnName = "organization")
+    private OrganizationPojo organization;
 
     @DatabaseField
     private int priority;
@@ -50,12 +50,12 @@ public class AdvertisingPojo implements Advertising {
     }
 
 	@Override
-	public PositionPojo getPosition() {
-		return position;
+	public OrganizationPojo getOrganization() {
+		return organization;
 	}
 
 	@Override
-	public Set<Category> getCategory() {
+	public Set<Category> getCategories() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Image")
@@ -26,17 +28,17 @@ public class ImagePojo implements Serializable, Image {
 	@OneToMany(mappedBy="image", targetEntity=AdvertisingPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set advertising = new java.util.HashSet();
+	private Set advertising = new java.util.HashSet();
 	
 	@OneToMany(mappedBy="logo", targetEntity=OrganizationPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set organization = new java.util.HashSet();
+	private Set organization = new java.util.HashSet();
 	
 	@OneToMany(mappedBy="image", targetEntity=EventPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set event = new java.util.HashSet();
+	private Set event = new java.util.HashSet();
 	
 	private void setId(int value) {
 		setId(new Integer(value));
@@ -62,29 +64,29 @@ public class ImagePojo implements Serializable, Image {
 		return binaryContent;
 	}
 	
-	public void setAdvertising(java.util.Set value) {
+	public void setAdvertising(Set value) {
 		this.advertising = value;
 	}
 	
-	public java.util.Set getAdvertising() {
+	public Set getAdvertising() {
 		return advertising;
 	}
 	
 	
-	public void setOrganization(java.util.Set value) {
+	public void setOrganization(Set value) {
 		this.organization = value;
 	}
 	
-	public java.util.Set getOrganization() {
+	public Set getOrganizations() {
 		return organization;
 	}
 	
 	
-	public void setEvent(java.util.Set value) {
+	public void setEvent(Set value) {
 		this.event = value;
 	}
 	
-	public java.util.Set getEvent() {
+	public Set getEvent() {
 		return event;
 	}
 	

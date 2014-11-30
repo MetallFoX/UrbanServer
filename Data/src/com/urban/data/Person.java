@@ -19,11 +19,7 @@ public interface Person {
 	public void setSurname(String surname);
 	
 	public Integer getPhoto();
-	
-	public Integer getAge();
-	
-	public void setAge(int age);
-	
+
 	public String getPhone();
 	
 	public void setPhone(String phone);
@@ -31,7 +27,5 @@ public interface Person {
 	public Date getBirthday();
 
 	public void setBirthday(Date birthday);
-	
-	//public User getUser();
-	
+
 }

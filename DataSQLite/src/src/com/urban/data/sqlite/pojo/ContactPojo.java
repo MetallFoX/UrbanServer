@@ -34,7 +34,7 @@ public class ContactPojo implements Contact {
 	}
 
 	@Override
-	public Set<Organization> getOrganization() {
+	public Set<Organization> getOrganizations() {
 		// TODO Auto-generated method stub
 		return null;
 	}

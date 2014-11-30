@@ -12,6 +12,6 @@ public interface Action {
 	
 	public String getSubject();
 	
-	public Position getPosition();
+	public Organization getOrganization();
 	
 }

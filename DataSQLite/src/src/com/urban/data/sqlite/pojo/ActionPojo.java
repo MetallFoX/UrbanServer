@@ -26,8 +26,8 @@ public class ActionPojo implements Action {
 	@DatabaseField
 	private String subject;
 	
-	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel = 2, columnName = "position")	
-	private PositionPojo position;
+	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel = 2, columnName = "organization")
+	private OrganizationPojo organization;
 	
 	private void setId(int value) {
 		this.id = value;
@@ -61,12 +61,12 @@ public class ActionPojo implements Action {
 		return subject;
 	}
 	
-	public void setPosition(PositionPojo value) {
-		this.position = value;
+	public void setOrganization(OrganizationPojo value) {
+		this.organization = value;
 	}
 	
-	public PositionPojo getPosition() {
-		return position;
+	public OrganizationPojo getOrganization() {
+		return organization;
 	}
 	
 }

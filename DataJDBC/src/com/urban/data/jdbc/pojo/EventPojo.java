@@ -4,6 +4,8 @@ import com.urban.data.Event;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Event")
@@ -30,12 +32,12 @@ public class EventPojo implements Serializable, Event {
 	@ManyToMany(mappedBy="event", targetEntity=OrganizationPojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set organization = new java.util.HashSet();
+	private Set organization = new java.util.HashSet();
 	
 	@ManyToMany(mappedBy="event", targetEntity=PlacePojo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set place = new java.util.HashSet();
+	private Set place = new java.util.HashSet();
 	
 	private void setId(int value) {
 		this.id = value;
@@ -65,20 +67,20 @@ public class EventPojo implements Serializable, Event {
 		return image;
 	}
 	
-	public void setOrganization(java.util.Set value) {
+	public void setOrganization(Set value) {
 		this.organization = value;
 	}
 	
-	public java.util.Set getOrganization() {
+	public Set getOrganizations() {
 		return organization;
 	}
 	
 	
-	public void setPlace(java.util.Set value) {
+	public void setPlace(Set value) {
 		this.place = value;
 	}
 	
-	public java.util.Set getPlace() {
+	public Set getPlace() {
 		return place;
 	}
 	

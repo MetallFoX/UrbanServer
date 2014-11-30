@@ -29,10 +29,7 @@ public class PersonPojo implements Serializable, Person {
 	
 	@Column(name="photo", nullable=true, length=10)	
 	private Integer photo;
-	
-	@Column(name="age", nullable=true, length=10)	
-	private Integer age;
-	
+
 	@Column(name="phone", nullable=true, length=255)	
 	private String phone;
 	
@@ -85,18 +82,6 @@ public class PersonPojo implements Serializable, Person {
 	
 	public Integer getPhoto() {
 		return photo;
-	}
-	
-	public void setAge(int value) {
-		setAge(new Integer(value));
-	}
-	
-	public void setAge(Integer value) {
-		this.age = value;
-	}
-	
-	public Integer getAge() {
-		return age;
 	}
 	
 	public void setPhone(String value) {

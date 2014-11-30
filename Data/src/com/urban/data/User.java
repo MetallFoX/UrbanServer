@@ -28,8 +28,8 @@ public interface User {
 	
 	public void setPerson(Person person);
 	
-	public Set<Position> getSubscribes();
+	public Set<Organization> getSubscribes();
 
-    public void setSubscribes(Set<Position> positions);
+    public void setSubscribes(Set<Organization> organizations);
 	
 }

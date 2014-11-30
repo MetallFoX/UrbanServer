@@ -28,10 +28,7 @@ public class PersonPojo implements Person {
 	
 	@DatabaseField	
 	private Integer photo;
-	
-	@DatabaseField	
-	private Integer age;
-	
+
 	@DatabaseField	
 	private String phone;
 	
@@ -89,18 +86,6 @@ public class PersonPojo implements Person {
 	
 	public Integer getPhoto() {
 		return photo;
-	}
-	
-	public void setAge(int value) {
-		setAge(Integer.valueOf(value));
-	}
-	
-	public void setAge(Integer value) {
-		this.age = value;
-	}
-	
-	public Integer getAge() {
-		return age;
 	}
 	
 	public void setPhone(String value) {

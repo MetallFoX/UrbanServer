@@ -69,26 +69,26 @@ public class OrganizationStubGenOracle {
             i++;
         }
 
-        int positionId = 0;
+        int organizationId = 0;
         int categoryId = 0;
         for (CategoryStub category : categories) {
-            Iterator<PositionStub> positionIterator = category.positions.iterator();
+            Iterator<OrganisationStub> organizationIterator = category.organizations.iterator();
 
             System.out.printf(
                     "insert into category (id, name, parent, \"order\") "
                     + "values (%d, '%s', null, %d);%n", categoryId, category.name, categoryId);
 
-            while (positionIterator.hasNext()) {
-                PositionStub position = (PositionStub)positionIterator.next();
+            while (organizationIterator.hasNext()) {
+                OrganisationStub organization = (OrganisationStub)organizationIterator.next();
                 System.out.printf(
-                        "insert into position (id, name, organization) "
-                        + "values (%d, '%s', %d);%n", positionId, position.name, orgMap.get(position.organization));
+                        "insert into organization (id, name, organization) "
+                        + "values (%d, '%s', %d);%n", organizationId, organization.name, orgMap.get(organization.organization));
 
                 System.out.printf(
-                        "insert into category_position (position, category) "
-                        + "values (%d, %d);%n", positionId, categoryId);
+                        "insert into category_organization (organization, category) "
+                        + "values (%d, %d);%n", organizationId, categoryId);
 
-                positionId++;
+                organizationId++;
             }
             categoryId++;
         }
@@ -556,7 +556,7 @@ public class OrganizationStubGenOracle {
     }
 
     private static class CategoryStub {
-        Set<PositionStub> positions = new HashSet<PositionStub>();
+        Set<OrganisationStub> organizations = new HashSet<OrganisationStub>();
 
         String name;
         int order;
@@ -566,20 +566,20 @@ public class OrganizationStubGenOracle {
             this.order = order;
         }
 
-        public void addPosition(PositionStub position) {
-            positions.add(position);
+        public void addOrganization(OrganisationStub organization) {
+            organizations.add(organization);
         }
 
         public void addByOrganization(OrganizationStub organization) {
-            positions.add(new PositionStub(organization.name, organization));
+            organizations.add(new OrganisationStub(organization.name, organization));
         }
     }
 
-    private static class PositionStub {
+    private static class OrganisationStub {
         String name;
         OrganizationStub organization;
 
-        public PositionStub(String name, OrganizationStub organization) {
+        public OrganisationStub(String name, OrganizationStub organization) {
             this.name = name;
             this.organization = organization;
         }

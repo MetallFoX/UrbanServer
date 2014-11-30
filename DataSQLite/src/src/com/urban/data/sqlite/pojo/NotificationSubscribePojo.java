@@ -18,18 +18,18 @@ public class NotificationSubscribePojo implements NotificationSubscribe {
     @DatabaseField(generatedId = true)
     int id;
 	
-	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel = 2, columnName = "position")	
-	private PositionPojo position;
+	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel = 2, columnName = "organization")
+	private OrganizationPojo organization;
 	
 	@DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel = 2, columnName = "user")	
 	private UserPojo user;
 	
-	public void setPosition(PositionPojo value) {
-		this.position = value;
+	public void setOrganization(OrganizationPojo value) {
+		this.organization = value;
 	}
 	
-	public PositionPojo getPosition() {
-		return position;
+	public OrganizationPojo getOrganization() {
+		return organization;
 	}
 	
 	public void setUser(UserPojo value) {
