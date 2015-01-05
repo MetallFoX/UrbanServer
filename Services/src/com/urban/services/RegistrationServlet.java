@@ -8,6 +8,7 @@ import com.urban.data.dao.UrbanCriterion;
 import com.urban.data.jdbc.pojo.UserPojo;
 import com.urban.services.error.ResponseError;
 import flexjson.JSONSerializer;
+import flexjson.transformer.DateTransformer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +25,8 @@ public class RegistrationServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+    private static final DateTransformer DATE_TRANSFORMER = new DateTransformer("MM/dd/yyyy");
 
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

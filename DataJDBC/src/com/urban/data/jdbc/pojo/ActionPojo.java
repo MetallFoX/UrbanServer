@@ -73,7 +73,7 @@ public class ActionPojo implements Serializable, Action {
 	public OrganizationPojo getOrganization() {
 		return organization;
 	}
-	
+
 	public String toString() {
 		return String.valueOf(getId());
 	}

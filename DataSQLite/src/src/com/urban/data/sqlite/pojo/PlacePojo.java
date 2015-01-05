@@ -32,7 +32,7 @@ public class PlacePojo implements Place {
     private String description;
 
     @ForeignCollectionField(eager = true)
-    private ForeignCollection<PlaceAddressLinkPojo> toAddressLinks;
+    private ForeignCollection<AddressPojo> addresses;
 
 	@Override
 	public int getId() {
@@ -56,12 +56,7 @@ public class PlacePojo implements Place {
 	
 	@Override
 	public Set<Address> getAddress() {
-		Set<Address> places = new HashSet<Address>();
-		
-		for (PlaceAddressLinkPojo link : toAddressLinks){
-			places.add(link.getAddress());
-		};
-		return places;
+        return new HashSet<Address>(addresses);
 	}
 
 	@Override

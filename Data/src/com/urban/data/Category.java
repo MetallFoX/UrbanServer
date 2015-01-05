@@ -15,5 +15,11 @@ public interface Category {
 	public Set<Advertising> getAdvertisements();
 	
 	public Set<Organization> getOrganizations();
+
+    public void setOrganizations(Set<Organization> organizations);
+
+    public Image getIcon();
+
+
 	
 }

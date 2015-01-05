@@ -13,5 +13,4 @@ public interface Action {
 	public String getSubject();
 	
 	public Organization getOrganization();
-	
 }

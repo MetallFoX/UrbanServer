@@ -55,9 +55,14 @@ public class ContactTypePojo implements Serializable, ContactType {
 	public Set getContact() {
 		return contact;
 	}
-	
-	
-	public String toString() {
+
+    @Override
+    public Type getType() {
+        return Type.getTypeById(getId());
+    }
+
+
+    public String toString() {
 		return String.valueOf(getId());
 	}
 	

@@ -97,12 +97,12 @@
   
   <servlet-mapping>
     <servlet-name>RegisterListener</servlet-name>
-    <url-pattern>/registerListener</url-pattern>
+    <url-pattern>/subscribe</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
     <servlet-name>UnregisterListener</servlet-name>
-    <url-pattern>/unregisterListener</url-pattern>
+    <url-pattern>/unsubscribe</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>

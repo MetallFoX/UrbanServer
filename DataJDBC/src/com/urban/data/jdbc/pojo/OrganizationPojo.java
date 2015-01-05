@@ -1,6 +1,7 @@
 package com.urban.data.jdbc.pojo;
 
 import com.urban.data.Organization;
+import com.urban.data.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -168,8 +169,13 @@ public class OrganizationPojo implements Serializable, Organization {
         return advertising;
     }
 
-	
-	public String toString() {
+    @Override
+    public Set<User> getSubscribers() {
+        return null;
+    }
+
+
+    public String toString() {
 		return String.valueOf(getId());
 	}
 	

@@ -26,7 +26,7 @@ public class UserPojo implements User {
 	
 	@DatabaseField	
 	private String password;
-	
+
 	@DatabaseField(dataType = DataType.DATE_STRING, format = "yyyy-MM-dd")
 	private Date regDate;
 	

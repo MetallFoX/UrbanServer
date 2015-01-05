@@ -45,7 +45,7 @@ CREATE TABLE Photo (id INTEGER NOT NULL, description varchar(255), url varchar(2
 CREATE TABLE PhotoGallery (id INTEGER NOT NULL, name varchar(255), description varchar(255), PRIMARY KEY (id));
 CREATE TABLE Page (id INTEGER NOT NULL, type integer(10), PRIMARY KEY (id));
 CREATE TABLE Category_Advertising (category integer(10) NOT NULL, advertising integer(10) NOT NULL, PRIMARY KEY (category, advertising), FOREIGN KEY(category) REFERENCES Category(id), FOREIGN KEY(advertising) REFERENCES Advertising(id));
-CREATE TABLE Category (id INTEGER NOT NULL, name varchar(255), parent integer(10), "order" integer(10) NOT NULL, PRIMARY KEY (id));
+CREATE TABLE Category (id INTEGER NOT NULL, name varchar(255), parent integer(10), "order" integer(10) NOT NULL, icon integer(10), PRIMARY KEY (id), FOREIGN KEY(icon) REFERENCES Image(id));
 CREATE TABLE News_Category (id INTEGER NOT NULL, name varchar(255), PRIMARY KEY (id));
 CREATE TABLE Person (id INTEGER NOT NULL, first_name varchar(255) NOT NULL, second_name varchar(255), surname varchar(255), photo integer(10), age integer(10), phone varchar(255), birthday date, PRIMARY KEY (id));
 CREATE TABLE Voting_Item (id INTEGER NOT NULL, answer integer(10) NOT NULL, count integer(10), voting integer(10) NOT NULL, PRIMARY KEY (id), FOREIGN KEY(voting) REFERENCES Voting(id));
@@ -61,7 +61,8 @@ CREATE TABLE Action (id INTEGER NOT NULL, startDate date, endDate date, subject 
 CREATE TABLE Organization_Page (Organization integer(10) NOT NULL, page integer(10) NOT NULL, PRIMARY KEY (organization, page), FOREIGN KEY(organization) REFERENCES Organization(id), FOREIGN KEY(page) REFERENCES Page(id));
 CREATE TABLE Info_Page (id INTEGER NOT NULL, PRIMARY KEY (id));
 CREATE TABLE Action_Page (id INTEGER NOT NULL, PRIMARY KEY (id));
-CREATE TABLE Category_Organization (category integer(10) NOT NULL, organization integer(10) NOT NULL, PRIMARY KEY (category, organization), FOREIGN KEY(category) REFERENCES Category(id), FOREIGN KEY(organization) REFERENCES Organization(id));
+CREATE TABLE Category_Organization (id INTEGER NOT NULL, category integer(10) NOT NULL, organization integer(10) NOT NULL, PRIMARY KEY (id), FOREIGN KEY(category) REFERENCES Category(id), FOREIGN KEY(organization) REFERENCES Organization(id));
+CREATE UNIQUE INDEX Category_OrganizationIndex on Category_Organization (category, organization);
 CREATE TABLE Image (id INTEGER NOT NULL, binaryContent blob, PRIMARY KEY (id));
 CREATE TABLE Contact (id INTEGER NOT NULL, ContactType integer(10) NOT NULL, contact varchar(255), PRIMARY KEY (id), FOREIGN KEY(ContactType) REFERENCES ContactType(id));
 CREATE TABLE ContactType (id INTEGER NOT NULL, name varchar(255), PRIMARY KEY (id));

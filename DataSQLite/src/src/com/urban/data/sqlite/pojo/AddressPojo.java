@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Address;
 import com.urban.data.Place;
 
-@DatabaseTable(tableName="Addresses")
+@DatabaseTable(tableName="Address")
 public class AddressPojo implements Address {
 	
 	public AddressPojo() {
@@ -29,6 +29,9 @@ public class AddressPojo implements Address {
     
     @DatabaseField(canBeNull = true)
     private Integer flat;
+
+    @DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel = 2, columnName = "place")
+    private PlacePojo place;
 
 	@Override
 	public int getId() {
@@ -77,9 +80,6 @@ public class AddressPojo implements Address {
 
 	@Override
 	public Place getPlace() {
-		// TODO Auto-generated method stub
-		return null;
+		return place;
 	}
-    
-    
 }

@@ -2,7 +2,6 @@ package com.urban.data;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public interface ContactType {
 	
@@ -10,11 +9,12 @@ public interface ContactType {
 	
 	public String getName();
 	
-	public Set<Contact> getContact();
+    public Type getType();
 	
 	
 	public enum Type {
-	    PHONE(1, "Телефон"), EMAIL(2, "e-mail"), WEB(3, "Сайт"), SKYPE(4, "Skype");
+	    PHONE(1, "Телефон"), EMAIL(2, "e-mail"), WEB(3, "Сайт"), SKYPE(4, "Skype"),
+        VK(5, "Вконтакте"), FACEBOOK(6, "Facebook"), OK(7, "Одноклассники");
 
 	    private static Map<Long, Type> searchMap = new HashMap<Long, Type>();
 
@@ -24,6 +24,9 @@ public interface ContactType {
 	        searchMap.put(2L, EMAIL);
 	        searchMap.put(3L, WEB);
 	        searchMap.put(4L, SKYPE);
+            searchMap.put(5L, VK);
+            searchMap.put(6L, FACEBOOK);
+            searchMap.put(7L, OK);
 	    }
 	    private String contactName;
 

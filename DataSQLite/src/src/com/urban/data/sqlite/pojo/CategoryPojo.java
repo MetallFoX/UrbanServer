@@ -6,6 +6,7 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Advertising;
 import com.urban.data.Category;
+import com.urban.data.Image;
 import com.urban.data.Organization;
 
 import java.util.Comparator;
@@ -43,6 +44,9 @@ public class CategoryPojo implements Category {
 	}
 
     private Set<OrganizationPojo> organization = new java.util.HashSet<OrganizationPojo>();
+
+    @DatabaseField(foreign = true, foreignAutoRefresh=true, maxForeignAutoRefreshLevel= 2, canBeNull = true, columnName = "icon")
+    private ImagePojo icon;
 
     @Override
     public int getId() {
@@ -101,7 +105,27 @@ public class CategoryPojo implements Category {
         }
     	return posSet;
     }
-    
+
+    /**
+     * TODO: Топорный метод. Переделать на добавлени/удаление по 1.
+     * @param organizations
+     */
+    @Override
+    public void setOrganizations(Set<Organization> organizations) {
+        toOrganizationsLinks.clear();
+        for (Organization org : organizations) {
+            CategoryOrganizationLinkPojo link = new CategoryOrganizationLinkPojo();
+            link.setCategory(this);
+            link.setOrganization((OrganizationPojo)org);
+            toOrganizationsLinks.add(link);
+        }
+    }
+
+    @Override
+    public Image getIcon() {
+        return icon;
+    }
+
     public Set<Advertising> getAdvertisements() {
         SortedSet<Advertising> advertisements = new TreeSet<Advertising>(new Comparator<Advertising>(){
         	public int compare(Advertising org1, Advertising org2){
@@ -122,6 +146,7 @@ public class CategoryPojo implements Category {
         }
     	return advertisements;
     }
+
 
 
     public String toString() {

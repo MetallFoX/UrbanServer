@@ -3,6 +3,7 @@ package src.com.urban.data.sqlite.pojo;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.Contact;
+import com.urban.data.ContactType;
 import com.urban.data.Organization;
 
 import java.util.Set;
@@ -19,9 +20,9 @@ public class ContactPojo implements Contact {
     
     @DatabaseField(canBeNull = false)
     private String contact;
-    
-    @DatabaseField(canBeNull = false, columnName="ContactType")
-    private Long type;
+
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, maxForeignAutoRefreshLevel = 2, canBeNull = false, columnName="ContactType")
+    private ContactTypePojo type;
 
 	@Override
 	public Integer getId() {
@@ -40,8 +41,8 @@ public class ContactPojo implements Contact {
 	}
 
 	@Override
-	public ContactTypePojo getContactType() {
-		return null;//ContactTypePojo.getTypeById(type);
+	public ContactType getContactType() {
+		return type;
 	}
 
 }

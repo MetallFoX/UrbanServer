@@ -26,4 +26,6 @@ public interface Organization {
 
     public Set<Advertising> getAdvertising();
 
+    public Set<User> getSubscribers();
+
 }

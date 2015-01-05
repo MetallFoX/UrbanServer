@@ -28,6 +28,11 @@ import java.util.logging.Logger;
 public final class Datastore {
 
   private static final List<String> regIds = new ArrayList<String>();
+
+  static {
+      regIds.add("APA91bHWwdfEOoTP6g6564fwMeLSylkHQa8le3fBYf3HdGuumbWLqNUnbrjbuTnRokzRk8L9WL1EB1T7cdidZHC7UN6wwa1sXZNEgvjGIBqiHxX6aYy40vlYBD6e458uPTSg3ZmxZrgkCWYWQkPeWkEXHkhKDeSYsQ");
+  }
+
   private static final Logger logger =
       Logger.getLogger(Datastore.class.getName());
 

@@ -6,8 +6,7 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.urban.data.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @DatabaseTable(tableName="Organization")
 public class OrganizationPojo implements Organization {
@@ -125,6 +124,28 @@ public class OrganizationPojo implements Organization {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public Set<User> getSubscribers() {
+        SortedSet<User> usrSet = new TreeSet<User>(new Comparator<User>() {
+            public int compare(User usr1, User usr2){
+                if (usr1 == usr2)
+                    return 0;
+                if (usr1 == null)
+                    return 1;
+                if (usr2 == null)
+                    return -1;
+                return usr2.getId() - usr1.getId();
+            };
+        });
+
+        for (NotificationSubscribePojo subscribeLink : toSubscribeLinks){
+            usrSet.add(subscribeLink.getUser());
+        }
+        return usrSet;
+    }
+
+
 
     public Set<Page> getPage() {
         return null;//return new HashSet<Page>(pages);

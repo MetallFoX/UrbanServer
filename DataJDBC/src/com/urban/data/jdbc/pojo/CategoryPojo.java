@@ -1,6 +1,7 @@
 package com.urban.data.jdbc.pojo;
 
 import com.urban.data.Category;
+import com.urban.data.Image;
 import com.urban.data.Organization;
 
 import javax.persistence.*;
@@ -93,10 +94,17 @@ public class CategoryPojo implements Serializable, Category {
 	public Set<Organization> getOrganizations() {
 		return organization;
 	}
-	
-	
-	public String toString() {
+
+    @Override
+    public Image getIcon() {
+        return null;
+    }
+
+
+    public String toString() {
 		return String.valueOf(getId());
 	}
+
+
 	
 }

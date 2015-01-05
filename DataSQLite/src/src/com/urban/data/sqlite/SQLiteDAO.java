@@ -39,6 +39,7 @@ public class SQLiteDAO implements IDAO {
 		classes.put(InfoPage.class, InfoPagePojo.class);
 		classes.put(News.class, NewsPojo.class);
 		classes.put(NewsCategory.class, NewsCategoryPojo.class);
+        classes.put(NotificationSubscribe.class, NotificationSubscribePojo.class);
 		classes.put(Organization.class, OrganizationPojo.class);
 		classes.put(Page.class, PagePojo.class);
 		classes.put(Person.class, PersonPojo.class);
