@@ -18,9 +18,6 @@ public class InitServlet extends HttpServlet {
         //DAO.setDAO(new JDBCDAO(""));
         String dbPath = getClass().getClassLoader().getResource("urban.db").getFile();
 
-        //removing of leading separator.
-        dbPath = dbPath.substring(1, dbPath.length());
-
         DAO.setDAO(new SQLiteDAO("jdbc:sqlite:" + dbPath));
     }
 }
