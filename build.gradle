@@ -34,3 +34,7 @@ dependencies {
             "org.apache.tomcat:coyote:${tomcatVersion}",
             "org.apache.tomcat:jasper:${tomcatVersion}"
 }
+
+tomcat {
+    httpPort = 8081
+}
