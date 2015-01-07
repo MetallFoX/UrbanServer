@@ -1,0 +1,88 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ServicesTomcatWAR">
+    <output-path>$PROJECT_DIR$/out/artifacts/ServicesTomcatWAR</output-path>
+    <root id="archive" name="ServicesTomcatWAR.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="UrbanServer" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: orm" />
+          <element id="library" level="project" name="Gradle: orai18n" />
+          <element id="library" level="project" name="Gradle: ojdbc5" />
+          <element id="library" level="project" name="Gradle: orai18n-utility" />
+          <element id="library" level="project" name="Gradle: orai18n-collation" />
+          <element id="library" level="project" name="Gradle: orai18n-servlet" />
+          <element id="library" level="project" name="Gradle: orai18n-mapping" />
+          <element id="library" level="project" name="Gradle: annotations" />
+          <element id="library" level="project" name="Gradle: gson-2.2.4" />
+          <element id="library" level="project" name="Gradle: json_simple-1.1" />
+          <element id="library" level="project" name="Gradle: junit" />
+          <element id="library" level="project" name="Gradle: servlet-api" />
+          <element id="library" level="project" name="Gradle: mockito-all-1.8.5" />
+          <element id="library" level="project" name="Gradle: gson-2.2.4-sources" />
+          <element id="library" level="project" name="Gradle: flexjson-2.1" />
+          <element id="library" level="project" name="Gradle: modelmapper-0.7.2" />
+          <element id="library" level="project" name="Gradle: flexjson-2.1-javadoc" />
+          <element id="library" level="project" name="Gradle: flexjson-2.1-sources" />
+          <element id="library" level="project" name="Gradle: gson-2.2.4-javadoc" />
+          <element id="library" level="project" name="Gradle: sqlite-jdbc-3.7.2" />
+          <element id="library" level="project" name="Gradle: h2-1.3.173" />
+          <element id="library" level="project" name="Gradle: ormlite-android-4.46" />
+          <element id="library" level="project" name="Gradle: ormlite-core-4.46 " />
+          <element id="library" level="project" name="Gradle: ormlite-jdbc-4.46" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/Lib/JDBC/orm.jar" />
+          <element id="library" level="module" name="Gradle: orai18n" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: orm" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: h2-1.3.173" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: ormlite-android-4.46" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: ormlite-core-4.46 " module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: ormlite-jdbc-4.46" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: sqlite-jdbc-3.7.2" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: flexjson-2.1-javadoc" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: flexjson-2.1-sources" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: flexjson-2.1" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: gson-2.2.4-javadoc" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: gson-2.2.4-sources" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: gson-2.2.4" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: json_simple-1.1" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: junit" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: mockito-all-1.8.5" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: modelmapper-0.7.2" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: annotations" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: ojdbc5" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: orai18n-collation" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: orai18n-mapping" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: orai18n-servlet" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: orai18n-utility" module-name="UrbanServer3" />
+          <element id="library" level="module" name="Gradle: h2-1.3.173" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: ormlite-android-4.46" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: ormlite-core-4.46 " module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: ormlite-jdbc-4.46" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: sqlite-jdbc-3.7.2" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: flexjson-2.1-javadoc" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: flexjson-2.1-sources" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: flexjson-2.1" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: gson-2.2.4-javadoc" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: gson-2.2.4-sources" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: gson-2.2.4" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: json_simple-1.1" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: junit" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: mockito-all-1.8.5" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: modelmapper-0.7.2" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: annotations" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: ojdbc5" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: orai18n-collation" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: orai18n-mapping" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: orai18n-servlet" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: orai18n-utility" module-name="UrbanServer" />
+          <element id="library" level="module" name="Gradle: orai18n" module-name="UrbanServer" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/UrbanServer3/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

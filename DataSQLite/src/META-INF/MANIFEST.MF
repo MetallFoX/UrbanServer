@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: h2-1.3.173.jar ormlite-android-4.46.jar ormlite-core-4.46 
- .jar ormlite-jdbc-4.46.jar sqlite-jdbc-3.7.2.jar
-Main-Class: 
-
