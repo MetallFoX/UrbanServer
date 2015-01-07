@@ -18,17 +18,17 @@ repositories {
 sourceSets {
     main {
         java {
-            srcDirs = ["src\\main\\java\\Data\\src", "src\\main\\java\\DataJDBC\\src", "src\\main\\java\\DataSQLite\\src",
-                       "src\\main\\java\\Services\\src", "src\\main\\java\\ServicesTomcatWAR\\src"]
+            srcDirs = ["src/main/java/Data/src", "src/main/java/DataJDBC/src", "src/main/java/DataSQLite/src",
+                       "src/main/java/Services/src", "src/main/java/ServicesTomcatWAR/src"]
         }
     }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile fileTree(dir: 'libs\\Lib\\SQLLite', include: ['*.jar'])
-    compile fileTree(dir: 'libs\\Lib\\Server', include: ['*.jar'])
-    compile fileTree(dir: 'libs\\Lib\\JDBC', include: ['*.jar'])
+    compile fileTree(dir: 'libs/Lib/SQLLite', include: ['*.jar'])
+    compile fileTree(dir: 'libs/Lib/Server', include: ['*.jar'])
+    compile fileTree(dir: 'libs/Lib/JDBC', include: ['*.jar'])
 
     def tomcatVersion = '6.0.37'
     tomcat "org.apache.tomcat:catalina:${tomcatVersion}",
