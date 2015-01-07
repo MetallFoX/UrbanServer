@@ -31,6 +31,7 @@ public final class Datastore {
 
   static {
       regIds.add("APA91bHWwdfEOoTP6g6564fwMeLSylkHQa8le3fBYf3HdGuumbWLqNUnbrjbuTnRokzRk8L9WL1EB1T7cdidZHC7UN6wwa1sXZNEgvjGIBqiHxX6aYy40vlYBD6e458uPTSg3ZmxZrgkCWYWQkPeWkEXHkhKDeSYsQ");
+      regIds.add("APA91bHTocITtYiuYfJT6g1fb4hv8BQHczbU7ztK41kVSekwKiE9gMOKcUmH-dCZb6gUD4g2Z4vzlW-LsvbQ-x1MxFuyQRKN7t2E32TOlMOYkbRx4mJl_EORmQFycvG4wsV6g4hszzFIzGPm_xS7jPR1IADG-smGAQ");
   }
 
   private static final Logger logger =

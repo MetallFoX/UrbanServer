@@ -66,7 +66,7 @@ public class ApiKeyInitializer implements ServletContextListener {
       }
     }*/
 	  
-	  return "AIzaSyDD2PQG2WLph2r0Z7V0Y5Iorh6xAJ_67HQ";
+	  return "AIzaSyAaCBDYkNawoFkGmudJvz6-1YI1uG2JAO4";
   }
 
   public void contextDestroyed(ServletContextEvent event) {
