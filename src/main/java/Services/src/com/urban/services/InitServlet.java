@@ -7,15 +7,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 public class InitServlet extends HttpServlet {
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Override
     public void init() throws ServletException {
         super.init();
         //DAO.setDAO(new JDBCDAO(""));
-        DAO.setDAO(new SQLiteDAO("jdbc:sqlite:F:\\Projects\\Observer\\app\\src\\main\\assets\\urban.db"));
+        String dbPath = getClass().getClassLoader().getResource("urban.db").getFile();
+
+        //removing of leading separator.
+        dbPath = dbPath.substring(1, dbPath.length());
+
+        DAO.setDAO(new SQLiteDAO("jdbc:sqlite:" + dbPath));
     }
 }
