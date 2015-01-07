@@ -11,8 +11,6 @@ compileJava.options.encoding = 'UTF-8'
 sourceCompatibility = 1.7
 version = '1.0'
 
-webAppDirName = 'src\\main\\webapp'
-
 repositories {
     mavenCentral()
 }
