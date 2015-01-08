@@ -25,6 +25,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -76,15 +78,13 @@ public class SendAllMessagesServlet extends BaseServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
 
-        String status = "No messages sent";
+        StringBuilder builder = new StringBuilder();
         for (Action action : getActions()) {
             Message message = getActionMessage(action);
             List<String> devices = getSubscribedDevices(action);
             if (devices.isEmpty()) {
-                status = "No devices for sending message";
-            } else if (devices.size() == 1) {
-                Result result = sendMessagePost(message, devices.get(0));
-                status = "Sending message to device";
+                builder.append("<br>");
+                builder.append("No subscribers for sending message: " + action.getSubject());
             } else {
                 int total = devices.size();
                 List<String> partialDevices = new ArrayList<String>(total);
@@ -100,15 +100,17 @@ public class SendAllMessagesServlet extends BaseServlet {
                         tasks++;
                     }
                 }
-                status = "Asynchronously sending " + tasks + " multicast messages to " + total + " devices";
+                builder.append("<br>");
+                builder.append("Asynchronously sending " + tasks + " multicast messages to " + total + " devices: " + action.getSubject());
             }
         }
-        req.setAttribute(HomeServlet.ATTRIBUTE_STATUS, status.toString());
+        if (builder.toString().isEmpty()) {
+            builder.append("<br>");
+            builder.append("No messages sent");
+        }
+        builder.insert(0, "Result:");
+        req.setAttribute(HomeServlet.ATTRIBUTE_STATUS, builder.toString());
         getServletContext().getRequestDispatcher("/home").forward(req, resp);
-    }
-
-    private Result sendMessagePost(Message message, String registrationId) throws IOException {
-        return sender.send(message, registrationId, 5);
     }
 
     private MulticastResult sendMessageToDevices(Message message, List<String> devices) throws IOException {
@@ -165,7 +167,23 @@ public class SendAllMessagesServlet extends BaseServlet {
     }
 
     private Message getActionMessage(Action action) {
-        return new Message.Builder().addData("data", action.getSubject()).build();
+        return new Message.Builder()
+                .addData("id", "" + action.getId())
+                .addData("start_date", THREAD_LOCAL_DATE_FORMAT.get().format(action.getStartDate()))
+                .addData("end_date",
+                        action.getEndDate() != null
+                            ? THREAD_LOCAL_DATE_FORMAT.get().format(action.getEndDate())
+                            : null)
+                .addData("subject", action.getSubject())
+                .addData("organization_id", "" + action.getOrganization().getId())
+                .build();
     }
+
+    private static final ThreadLocal<DateFormat> THREAD_LOCAL_DATE_FORMAT = new ThreadLocal<DateFormat>() {
+        @Override
+        protected DateFormat initialValue() {
+            return new SimpleDateFormat("dd-MM-yyyy");
+        }
+    };
 
 }
